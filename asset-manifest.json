@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/fieldofdreams/static/css/main.5c7256d7.chunk.css",
+    "main.js": "/fieldofdreams/static/js/main.1c561e79.chunk.js",
+    "main.js.map": "/fieldofdreams/static/js/main.1c561e79.chunk.js.map",
+    "runtime-main.js": "/fieldofdreams/static/js/runtime-main.98a3fb0b.js",
+    "runtime-main.js.map": "/fieldofdreams/static/js/runtime-main.98a3fb0b.js.map",
+    "static/css/2.25b83785.chunk.css": "/fieldofdreams/static/css/2.25b83785.chunk.css",
+    "static/js/2.f76069fd.chunk.js": "/fieldofdreams/static/js/2.f76069fd.chunk.js",
+    "static/js/2.f76069fd.chunk.js.map": "/fieldofdreams/static/js/2.f76069fd.chunk.js.map",
+    "index.html": "/fieldofdreams/index.html",
+    "precache-manifest.2e8cdd8cb1e3082b2c9065fad94d32cc.js": "/fieldofdreams/precache-manifest.2e8cdd8cb1e3082b2c9065fad94d32cc.js",
+    "service-worker.js": "/fieldofdreams/service-worker.js",
+    "static/css/2.25b83785.chunk.css.map": "/fieldofdreams/static/css/2.25b83785.chunk.css.map",
+    "static/css/main.5c7256d7.chunk.css.map": "/fieldofdreams/static/css/main.5c7256d7.chunk.css.map",
+    "static/js/2.f76069fd.chunk.js.LICENSE.txt": "/fieldofdreams/static/js/2.f76069fd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98a3fb0b.js",
+    "static/css/2.25b83785.chunk.css",
+    "static/js/2.f76069fd.chunk.js",
+    "static/css/main.5c7256d7.chunk.css",
+    "static/js/main.1c561e79.chunk.js"
+  ]
+}
