@@ -1,0 +1,24 @@
+.rbc-event {
+  /* background: repeating-linear-gradient(
+    45deg,
+    #90c290,
+    #90c290 10px,
+    #82af82 10px,
+    #82af82 20px
+  ); */
+  background-color: #236533;
+}
+
+.rbc-event.rbc-selected {
+  background: repeating-linear-gradient(
+    45deg,
+    #236533,
+    #236533 10px,
+    #1a5127 10px,
+    #1a5127 20px
+  );
+}
+
+.rbc-today {
+    background-color: #ecffea;
+}
