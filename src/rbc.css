@@ -6,17 +6,12 @@
     #82af82 10px,
     #82af82 20px
   ); */
-  background-color: #236533;
+  background-color: rgb(235, 235, 235);
+  color: black;
 }
 
 .rbc-event.rbc-selected {
-  background: repeating-linear-gradient(
-    45deg,
-    #236533,
-    #236533 10px,
-    #1a5127 10px,
-    #1a5127 20px
-  );
+  background-color: rgb(220, 220, 220);
 }
 
 .rbc-today {

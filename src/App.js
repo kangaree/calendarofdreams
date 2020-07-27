@@ -7,20 +7,11 @@ import "./App.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./rbc.css";
 
-import mlb from "./mlb.json";
+import MLBStatsAPI from "mlb-stats-api";
 
-const mlbSchedule = mlb
-  .map((game) => {
-    const startMoment = moment(game["START DATE"] + " " + game["START TIME"]);
-    const endMoment = moment(game["END DATE"] + " " + game["END TIME"]);
+import teamnames from "./teamnames.json"
 
-    return {
-      start: startMoment.toDate(),
-      end: endMoment.toDate(),
-      title: game["SUBJECT"],
-      desc: game["LOCATION"],
-    };
-  });
+const mlbStats = new MLBStatsAPI();
 
 const localizer = momentLocalizer(moment);
 
@@ -30,17 +21,28 @@ function Event({ event }) {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
         <div
           style={{
             width: 40,
-            height: 40,
-            backgroundImage: `url("./logos/${
+            height: 20,
+            backgroundImage: `url("./calendarofdreams/logos/${
               event.title.split(" at ")[0]
             }.png")`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "50% 50%",
+          }}
+        />
+        {/* <span>@</span> */}
+        <div
+          style={{
+            width: 20,
+            height: 10,
+            backgroundImage: `url("./calendarofdreams/at_sign.svg.png")`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "50% 50%",
@@ -49,8 +51,8 @@ function Event({ event }) {
         <div
           style={{
             width: 40,
-            height: 40,
-            backgroundImage: `url("./logos/${
+            height: 20,
+            backgroundImage: `url("./calendarofdreams/logos/${
               event.title.split(" at ")[1]
             }.png")`,
             backgroundSize: "contain",
@@ -59,12 +61,6 @@ function Event({ event }) {
           }}
         />
       </div>
-      <div>
-        <strong>
-          {event.title.split(" at ")[0]} @ {event.title.split(" at ")[1]}
-        </strong>
-      </div>
-      <div style={{fontSize: 12}}>{event.desc && event.desc}</div>
     </span>
   );
 }
@@ -77,29 +73,58 @@ class App extends React.Component {
 
   state = {
     events: [],
-    team: "Yankees",
+    unfilteredEvents: [],
+    team: "MLB",
   };
 
-  componentDidMount() {
-    this.setState({
-      events: mlbSchedule.filter((event) =>
-        event.title.includes(this.state.team)
-      ),
+  async componentDidMount() {
+
+    const response = await mlbStats.getSchedule({
+      params: {
+        sportId: 1,
+        // TODO: dynamically change every new year
+        startDate: "07/23/2020",
+        endDate: "12/31/2020",
+      },
     });
-  }
 
-  handleTeam = (teamValue) => {
-    console.log("new team");
-    this.setState({ language: teamValue });
-  };
+    const dates = response.data.dates;
+    const games = dates.reduce((acc, curr) => [...acc, ...curr.games], []);
+
+    const schedule = games.map((game) => {
+      const startMoment = moment(game.gameDate);
+      let endMoment = moment(game.gameDate).add(1, "hours");
+
+      return {
+        start: startMoment.toDate(),
+        end: endMoment.toDate(),
+        title:
+          teamnames[game.teams.away.team.name] +
+          " at " +
+          teamnames[game.teams.home.team.name],
+        desc: game.venue.name,
+      };
+    });
+
+    this.setState({
+      events: schedule,
+      unfilteredEvents: schedule,
+    })
+  }
 
   handleChange = (event) => {
     this.setState({ team: event.target.value });
-    this.setState({
-      events: mlbSchedule.filter((baseballEvent) =>
-        baseballEvent.title.includes(event.target.value)
-      ),
-    });
+
+    if (event.target.value === "MLB") {
+      this.setState({events: this.state.unfilteredEvents})
+    } else {
+      this.setState({
+        events: this.state.unfilteredEvents.filter((baseballEvent) =>
+          baseballEvent.title.includes(event.target.value)
+        ),
+      });
+    }
+
   }
 
   render = () => {
@@ -107,52 +132,36 @@ class App extends React.Component {
       <div className="App">
         <div style={{ height: "5vh" }}>
           <select value={this.state.team} onChange={this.handleChange}>
-            <option value="Yankees">Yankees</option>
-            <option value="Orioles">Orioles</option>
-            <option value="Red Sox">Red Sox</option>
-            <option value="Rays">Rays</option>
-            <option value="Blue Jays">Blue Jays</option>
-            <option value="White Sox">White Sox</option>
-            <option value="Indians">Indians</option>
-            <option value="Tigers">Tigers</option>
-            <option value="Royals">Royals</option>
-            <option value="Twins">Twins</option>
-            <option value="Astros">Astros</option>
-            <option value="Angels">Angels</option>
-            <option value="Athletics">Athletics</option>
-            <option value="Mariners">Mariners</option>
-            <option value="Rangers">Rangers</option>
-            <option value="Braves">Braves</option>
-            <option value="Marlins">Marlins</option>
-            <option value="Mets">Mets</option>
-            <option value="Phillies">Phillies</option>
-            <option value="Nationals">Nationals</option>
-            <option value="Cubs">Cubs</option>
-            <option value="Reds">Reds</option>
-            <option value="Brewers">Brewers</option>
-            <option value="Pirates">Pirates</option>
-            <option value="Cardinals">Cardinals</option>
-            <option value="Diamondbacks">Diamondbacks</option>
-            <option value="Rockies">Rockies</option>
-            <option value="Dodgers">Dodgers</option>
-            <option value="Padres">Padres</option>
-            <option value="Giants">Giants</option>
+            <option value="MLB">MLB</option>
+            {Object.keys(teamnames).map((name) => (
+              <option value={teamnames[name]}>{name}</option>
+            ))}
           </select>
         </div>
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
-          defaultView="month"
+          defaultView="week"
           events={this.state.events}
           style={{ height: "95vh" }}
           components={{
-            event: Event,
+            week: {
+              event: Event,
+            },
           }}
           // 60 day regular season sprint + 30
           length={90}
           // noon start
           min={new Date(0, 0, 0, 12, 0, 0)}
-          views={["month", "week", "agenda"]}
+          // views={["month", "week", "agenda"]}
+          // formats={{ eventTimeRangeFormat: "spagett" }}
+          formats={{
+            eventTimeRangeFormat: ({ start }) => moment(start).format("h:mm A"),
+            agendaTimeRangeFormat: ({ start }) =>
+              moment(start).format("h:mm A"),
+          }}
+          popup
+          onSelectEvent={() => console.log("an event has been selected")}
         />
       </div>
     );
