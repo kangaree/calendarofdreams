@@ -29,7 +29,7 @@ function Event({ event }) {
           style={{
             width: 40,
             height: 20,
-            backgroundImage: `url("./calendarofdreams/logos/${
+            backgroundImage: `url("./logos/${
               event.title.split(" at ")[0]
             }.png")`,
             backgroundSize: "contain",
@@ -42,7 +42,7 @@ function Event({ event }) {
           style={{
             width: 20,
             height: 10,
-            backgroundImage: `url("./calendarofdreams/at_sign.svg.png")`,
+            backgroundImage: `url("./at_sign.svg.png")`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "50% 50%",
@@ -52,7 +52,7 @@ function Event({ event }) {
           style={{
             width: 40,
             height: 20,
-            backgroundImage: `url("./calendarofdreams/logos/${
+            backgroundImage: `url("./logos/${
               event.title.split(" at ")[1]
             }.png")`,
             backgroundSize: "contain",
