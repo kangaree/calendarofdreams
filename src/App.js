@@ -25,6 +25,7 @@ function Event({ event }) {
           alignItems: "center",
         }}
       >
+        <span>{event.data.teams.away.score}</span>
         <div
           style={{
             width: 40,
@@ -37,17 +38,7 @@ function Event({ event }) {
             backgroundPosition: "50% 50%",
           }}
         />
-        {/* <span>@</span> */}
-        <div
-          style={{
-            width: 20,
-            height: 10,
-            backgroundImage: `url("./at_sign.svg.png")`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 50%",
-          }}
-        />
+        <span>@</span>
         <div
           style={{
             width: 40,
@@ -60,6 +51,7 @@ function Event({ event }) {
             backgroundPosition: "50% 50%",
           }}
         />
+        <span>{event.data.teams.home.score}</span>
       </div>
     </span>
   );
@@ -103,6 +95,7 @@ class App extends React.Component {
           " at " +
           teamnames[game.teams.home.team.name],
         desc: game.venue.name,
+        data: game,
       };
     });
 
@@ -141,13 +134,10 @@ class App extends React.Component {
         <Calendar
           localizer={localizer}
           defaultDate={new Date()}
-          defaultView="week"
           events={this.state.events}
           style={{ height: "95vh" }}
           components={{
-            week: {
-              event: Event,
-            },
+            event: Event,
           }}
           // 60 day regular season sprint + 30
           length={90}
