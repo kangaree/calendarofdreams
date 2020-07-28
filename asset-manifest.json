@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/calendarofdreams/static/css/main.79313661.chunk.css",
-    "main.js": "/calendarofdreams/static/js/main.6c7918d9.chunk.js",
-    "main.js.map": "/calendarofdreams/static/js/main.6c7918d9.chunk.js.map",
+    "main.js": "/calendarofdreams/static/js/main.ceeb82ad.chunk.js",
+    "main.js.map": "/calendarofdreams/static/js/main.ceeb82ad.chunk.js.map",
     "runtime-main.js": "/calendarofdreams/static/js/runtime-main.2f834f3d.js",
     "runtime-main.js.map": "/calendarofdreams/static/js/runtime-main.2f834f3d.js.map",
     "static/css/2.25b83785.chunk.css": "/calendarofdreams/static/css/2.25b83785.chunk.css",
     "static/js/2.a5565efd.chunk.js": "/calendarofdreams/static/js/2.a5565efd.chunk.js",
     "static/js/2.a5565efd.chunk.js.map": "/calendarofdreams/static/js/2.a5565efd.chunk.js.map",
     "index.html": "/calendarofdreams/index.html",
-    "precache-manifest.4d378558f03cf3d55acb689733d45a88.js": "/calendarofdreams/precache-manifest.4d378558f03cf3d55acb689733d45a88.js",
+    "precache-manifest.8fa7049bcbc91c96c34dafd6d1891574.js": "/calendarofdreams/precache-manifest.8fa7049bcbc91c96c34dafd6d1891574.js",
     "service-worker.js": "/calendarofdreams/service-worker.js",
     "static/css/2.25b83785.chunk.css.map": "/calendarofdreams/static/css/2.25b83785.chunk.css.map",
     "static/css/main.79313661.chunk.css.map": "/calendarofdreams/static/css/main.79313661.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.25b83785.chunk.css",
     "static/js/2.a5565efd.chunk.js",
     "static/css/main.79313661.chunk.css",
-    "static/js/main.6c7918d9.chunk.js"
+    "static/js/main.ceeb82ad.chunk.js"
   ]
 }
