@@ -7,4 +7,4 @@ TODOs:
 - Click on event and see more detailed view
 - Add r/baseball and r/nyyankees subreddit flair
 
-"Test"
+[Live](https://www.garykangaroo.com/calendarofdreams)
