@@ -75,8 +75,8 @@ class App extends React.Component {
       params: {
         sportId: 1,
         // TODO: dynamically change every new year
-        startDate: "07/23/2020",
-        endDate: "12/31/2020",
+        startDate: "04/01/2021",
+        endDate: "12/31/2021",
       },
     });
 
