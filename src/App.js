@@ -70,13 +70,14 @@ class App extends React.Component {
   };
 
   async componentDidMount() {
-
+    const year = new Date().getFullYear()
+    
     const response = await mlbStats.getSchedule({
       params: {
         sportId: 1,
         // TODO: dynamically change every new year
-        startDate: "04/01/2021",
-        endDate: "12/31/2021",
+        startDate: `04/01/${year}`,
+        endDate: `12/31/${year}`,
       },
     });
 
