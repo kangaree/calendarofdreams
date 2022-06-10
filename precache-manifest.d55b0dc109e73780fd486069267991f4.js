@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b8dc72364277e69d02d82ce10a374908",
+    "revision": "e52c4655e0cd2b5e50c219007cff02cb",
     "url": "/calendarofdreams/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/calendarofdreams/static/css/2.25b83785.chunk.css"
   },
   {
-    "revision": "5cf03f64bb427cf5af45",
+    "revision": "73e7b415f380e11e5e28",
     "url": "/calendarofdreams/static/css/main.79313661.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/calendarofdreams/static/js/2.a5565efd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5cf03f64bb427cf5af45",
-    "url": "/calendarofdreams/static/js/main.c8475356.chunk.js"
+    "revision": "73e7b415f380e11e5e28",
+    "url": "/calendarofdreams/static/js/main.0761d3d6.chunk.js"
   },
   {
     "revision": "596fa2be294d3a7c791a",
